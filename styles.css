@@ -1,0 +1,16 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+}
