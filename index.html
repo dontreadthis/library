@@ -16,7 +16,35 @@
     <div class="container">
       <h1 class="container-heading">Your Library</h1>
       <div class="container-library"></div>
-      <form class="container-form"></form>
+      <form class="container-form">
+        <div class="container-form-top">
+          <h2 class="container-form-heading">Add A Book</h2>
+          <ul class="container-form-inputs">
+            <li class="container-form-input">
+              <label for="name">Book Name:</label>
+              <input id="name" name="bookName" required/>
+            </lin>
+
+            <li class="container-form-input">
+              <label for="author">Author:</label>
+              <input id="author" name="bookAuthor" required/>
+            </li>
+
+            <li class="container-form-input">
+              <label for="pages">Pages:</label>
+              <input id="author" name="bookPages" type="number" max=10000 required>
+            </li>
+
+            <li class="container-form-input">
+              <label for="read">Read this yet?</label>
+              <input id="read" name="bookRead" type="checkbox" required>
+            </li>          
+          </ul>
+          <button class="container-form-submit">Submit</button>
+        </div>
+
+        <p class="container-form-credit">Background by <a href="https://www.goodfon.com/user/marinadoneck/">Marinaondeck</a> at <a href="https://www.goodfon.com/">Goodfon</a></p>
+      </form>
     </div>
     <script src="code.js"></script>
 
