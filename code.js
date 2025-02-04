@@ -1,18 +1,23 @@
 const bookLibrary = document.querySelector('.container-library')
 const bookSubmit = document.querySelector('.container-form-submit')
 const bookForm = document.querySelector('.container-form')
+let bookName
+let bookAuthor
+let bookPages
+let bookRead
+let book
 const myLibrary = []
 
-function Book(title, author, pages, year, read) {
+function Book(title, author, pages, read) {
   this.title = title
   this.author = author
   this.pages = pages
-  this.year = year
   this.read = read
 }
 
 function addBookToLibrary(book, library) {
   library.push(book)
+  displayLibrary(library)
 }
 
 function displayBook(book) {
@@ -43,12 +48,6 @@ function displayBook(book) {
         bookAttribute = document.createElement('p')
         bookAttribute.textContent = book[attribute] + ' pages'
         bookAttribute.classList.add('book-pages')
-        bookTop.append(bookAttribute)
-        break
-      case 'year':
-        bookAttribute = document.createElement('p')
-        bookAttribute.textContent = 'Published ' + book[attribute]
-        bookAttribute.classList.add('book-year')
         bookTop.append(bookAttribute)
         break
       case 'read':
@@ -111,24 +110,27 @@ function displayBook(book) {
 }
 
 function displayLibrary(library) {
+  bookLibrary.innerHTML = ''
   for (const book in library) {
     displayBook(library[book])
   }
 }
 
 addBookToLibrary(
-  new Book('Stewie Griffin', 'Stewie Griffin', 78, 1932, false),
-  myLibrary
-)
-addBookToLibrary(
-  new Book(
-    'Diary of Your Motherddfhdjafhkdshfdkhfdkhfdjkdfsfjelfhekjfhekhfekjefh',
-    'Ray William Johnson',
-    143,
-    1738,
-    true
-  ),
+  new Book('Stewie Griffin', 'Stewie Griffin', 78, false),
   myLibrary
 )
 
-displayLibrary(myLibrary)
+bookSubmit.addEventListener('click', function () {
+  bookFormData = new FormData(bookForm)
+
+  bookName = bookFormData.get('bookName')
+  bookAuthor = bookFormData.get('bookAuthor')
+  bookPages = Number(bookFormData.get('bookPages'))
+  bookRead = bookFormData.get('bookRead') ? false : true
+  book = new Book(bookName, bookAuthor, bookPages, bookRead)
+  console.log(bookName)
+  if (bookName && bookAuthor && bookPages >= 1) {
+    addBookToLibrary(book, myLibrary)
+  }
+})

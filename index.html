@@ -16,7 +16,7 @@
     <div class="container">
       <h1 class="container-heading">Your Library</h1>
       <div class="container-library"></div>
-      <form class="container-form">
+      <form class="container-form" onsubmit="return false;">
         <div class="container-form-top">
           <h2 class="container-form-heading">Add A Book</h2>
           <ul class="container-form-inputs">
@@ -32,12 +32,12 @@
 
             <li class="container-form-input">
               <label for="pages">Pages:</label>
-              <input id="author" name="bookPages" type="number" max=10000 required>
+              <input id="author" name="bookPages" type="number" min="1" max=10000 required>
             </li>
 
             <li class="container-form-input">
               <label for="read">Read this yet?</label>
-              <input id="read" name="bookRead" type="checkbox" required>
+              <input id="read" name="bookRead" type="checkbox">
             </li>          
           </ul>
           <button class="container-form-submit">Submit</button>
